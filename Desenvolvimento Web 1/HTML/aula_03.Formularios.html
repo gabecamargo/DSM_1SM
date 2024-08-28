@@ -9,20 +9,44 @@
     <body>
         <h1>Modelo de Formulário</h1>
         <form>
-            <div>
-                <label>Nome:</label>
-                <input type="text" id="nome" name="nome">
-            </div>
+            <fieldset>
+                <legend>Informações</legend>
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" id="nome" name="nome">
+                </div>
 
-            <div>
-                <label>Senha:</label>
-                <input type="password" id="password" name="senha">
-            </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="text" id="emai" name="email">
+                </div>
 
-            <div>
-                <label>Cidade:</label>
-                <input value="Jacareí" type="text" id="cidade" name="cidade">
-            </div>
+                <div>
+                    <label>Senha:</label>
+                    <input type="password" id="password" name="senha">
+                </div>
+
+                <div>
+                    <label>Cidade:</label>
+                    <input type="text" id="cidade" name="cidade">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Frutas</legend>
+
+                <div>
+                    <input type="radio" name="fruta" id="um" value="Abacaxi">
+                    <label for="um">Abacaxi</label>
+                    <br>
+
+                    <input type="radio" name="fruta" id="um" value="Mamao">
+                    <label for="um">Mamão</label>
+                </div>
+            </fieldset>
+
+            <br>
+            <button>Enviar</button>
 
         </form>
     </body>
