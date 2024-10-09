@@ -1,0 +1,18 @@
+{
+  "name": "aula-09",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio01": "node ./src/exercicio01",
+    "exercicio02": "node ./src/exercicio02",
+    "exercicio03": "node ./src/exercicio03",
+    "exercicio04": "node ./src/exercicio04",
+    "exercicio05": "node ./src/exercicio05",
+    "exercicio06": "node ./src/exercicio06",
+    "exercicio07": "node ./src/exercicio07",
+    "exercicio08": "node ./src/exercicio08"
+  },
+  "author": "",
+  "license": "ISC"
+}
