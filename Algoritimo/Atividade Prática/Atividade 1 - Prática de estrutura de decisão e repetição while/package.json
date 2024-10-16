@@ -12,8 +12,8 @@
     "exercicio06": "node ./src/exercicio06",
     "exercicio07": "node ./src/exercicio07",
     "exercicio08": "node ./src/exercicio08",
-    "exercicio09": "node ./src/exercicio07",
-    "exercicio10": "node ./src/exercicio07"
+    "exercicio09": "node ./src/exercicio09",
+    "exercicio10": "node ./src/exercicio10"
   },
   "author": "",
   "license": "ISC"
