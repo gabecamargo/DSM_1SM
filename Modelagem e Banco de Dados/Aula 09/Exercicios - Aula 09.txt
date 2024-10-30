@@ -1,3 +1,38 @@
+-- Database: aula09
+
+-- DROP DATABASE IF EXISTS aula09;
+
+CREATE DATABASE aula09
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+drop table if exists tbmatricula;
+drop table if exists tbaluno;
+drop table if exists tbdisciplina;
+create table if not exists tbaluno (
+ id INTEGER PRIMARY KEY,
+ nome VARCHAR(40) not null
+);
+create table if not exists tbdisciplina (
+ id INTEGER PRIMARY KEY,
+ nome VARCHAR(30) not null,
+ carga INTEGER
+);
+create table if not exists tbmatricula (
+ iddisciplina INTEGER,
+ idaluno INTEGER,
+ nota FLOAT,
+ PRIMARY KEY (iddisciplina, idaluno),
+ FOREIGN KEY (iddisciplina)REFERENCES tbdisciplina(id),
+ FOREIGN KEY (idaluno)REFERENCES tbaluno(id)
+);
+
 --exec1
 insert into tbaluno(id,nome)
 values
@@ -43,3 +78,28 @@ from tbdisciplina as d
 where d.id = m.iddisciplina and d.nome = 'Modelagem de Banco de Dados';
 
 --exec6
+UPDATE tbmatricula as m
+SET nota = 5
+FROM tbaluno as a, tbdisciplina as d
+WHERE a.id = m.idaluno and d.id = m.iddisciplina
+and a.nome = 'Luiz Carlos' and d.nome = 'Inglês I';
+
+--exec7
+UPDATE tbmatricula as m
+SET nota = 0.0
+FROM tbaluno as a, tbdisciplina as d
+WHERE a.id = m.idaluno and d.id = m.iddisciplina
+and nota is NULL;
+
+--exec8
+delete from tbmatricula
+where nota = 0.0;
+
+--exec9
+delete from tbmatricula as m
+USING tbaluno as a, tbdisciplina as d
+WHERE a.id = m.idaluno and d.id = m.iddisciplina
+and a.nome = 'Luiz Carlos' and d.nome = 'Inglês I';
+
+--exec10
+delete from tbmatricula;
