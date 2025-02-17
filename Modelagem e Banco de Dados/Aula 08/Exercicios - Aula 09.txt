@@ -1,0 +1,45 @@
+--exec1
+insert into tbaluno(id,nome)
+values
+(1,'Ana Maria'),
+(2,'Luiz Carlos'),
+(3,'Maria Silva'),
+(4,'Renato Rodrigues'),
+(5,'Carla Santiago');
+
+--exec2
+insert into tbdisciplina(id,nome,carga)
+values
+(1,'Modelagem de Banco de Dados',80),
+(2,'Design Digital',80),
+(3,'Estrutura de Dados',null),
+(4,'Experiência de Usuário',40),
+(5,'Aprendizagem de Máquina',null),
+(6,'Inglês I',null);
+
+--exec3
+insert into tbmatricula
+values
+(3,1,7.8),
+(1,5,8.4),
+(1,2,7.5),
+(6,2,null),
+(3,4,null),
+(5,4,8.9),
+(6,4,null);
+
+select * from tbaluno as a, tbmatricula as m, tbdisciplina as d
+where a.id= m.idaluno and m.iddisciplina = d.id;
+
+--exec4
+UPDATE tbmatricula
+SET nota = nota + 0.5
+WHERE nota IS NOT NULL;
+
+--exec5
+UPDATE tbmatricula as m
+SET nota = nota + 0.2
+from tbdisciplina as d
+where d.id = m.iddisciplina and d.nome = 'Modelagem de Banco de Dados';
+
+--exec6
