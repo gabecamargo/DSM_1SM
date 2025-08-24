@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carros</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <h1>Gerenciar Carros</h1>
+  <form id="formCarro">
+    <input type="text" id="modeloCarro" placeholder="Modelo do carro" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Modelo</th><th>Ações</th></tr>
+    </thead>
+    <tbody id="listaCarros"></tbody>
+  </table>
+  <a href="index.html">Voltar</a>
+</body>
+</html>

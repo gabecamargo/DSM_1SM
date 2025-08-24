@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Associações</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <h1>Gerenciar Associações Pessoa x Carro</h1>
+  <form id="formAssociacao">
+    <input type="number" id="idPessoa" placeholder="ID da Pessoa" required>
+    <input type="number" id="idCarro" placeholder="ID do Carro" required>
+    <button type="submit">Associar</button>
+  </form>
+  <table>
+    <thead>
+      <tr><th>Pessoa</th><th>Carro</th><th>Ações</th></tr>
+    </thead>
+    <tbody id="listaAssociacoes"></tbody>
+  </table>
+  <a href="index.html">Voltar</a>
+</body>
+</html>
