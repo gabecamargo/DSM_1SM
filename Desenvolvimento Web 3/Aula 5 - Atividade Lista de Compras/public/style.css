@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #1a1a1a;
+    --card-bg: #2b2b2b;
+    --text-color: #f5f5f5;
+    --primary-color: #4CAF50;
+    --primary-hover: #45a049;
+    --edit-color: #50adb9;
+    --edit-hover: #4798a3;
+    --delete-color: #c53a30;
+    --delete-hover: #af332a;
+    --border-color: #444444;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 2.5em;
+    color: var(--text-color);
+    margin: 0;
+}
+
+h1 i {
+    margin-right: 15px;
+    color: var(--primary-color);
+}
+
+.container {
+    background: var(--card-bg);
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 650px;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    background: #333333;
+    color: var(--text-color);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    flex-grow: 1;
+}
+
+input::placeholder {
+    color: #999999;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+button {
+    padding: 12px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+form button {
+    background: var(--primary-color);
+    color: #fff;
+    min-width: 180px;
+}
+
+form button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+tr {
+    background: #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+tr:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+td {
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 400;
+}
+
+td button {
+    margin-left: 10px;
+    padding: 8px 14px;
+    font-size: 0.9em;
+    border-radius: 6px;
+}
+
+td.acoes {
+    text-align: right;
+}
+
+tr td:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+tr td:last-child{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-editar {
+    background: var(--edit-color);
+    color: #fff;
+}
+
+.btn-editar:hover {
+    background: var(--edit-hover);
+    transform: scale(1.05);
+}
+
+.btn-excluir {
+    background: var(--delete-color);
+    color: #fff;
+}
+
+.btn-excluir:hover {
+    background: var(--delete-hover);
+    transform: scale(1.05);
+}
