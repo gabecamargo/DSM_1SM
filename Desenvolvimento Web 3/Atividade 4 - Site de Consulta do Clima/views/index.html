@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherApp</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>☀️ Previsão de Tempo</h1>
+      <h2>Descubra o clima em tempo real da sua cidade!</h2>
+    </header>
+
+    <main>
+      <div class="search-box">
+        <input id="cityInput" type="text" placeholder="Digite o nome da cidade..." />
+        <button id="searchBtn">Buscar</button>
+      </div>
+
+      <div id="result" class="card hidden"></div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
