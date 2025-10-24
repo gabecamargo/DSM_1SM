@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Vinil e CD</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 920px; margin: 32px auto; padding: 0 16px; }
+    h1 { margin-bottom: 8px; }
+    form { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 16px; }
+    form input, form select, form button { padding: 8px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .actions { display: flex; gap: 8px; }
+    .muted { color: #666; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <h1>Cadastro de Discos</h1>
+  <p class="muted">CRUD com Node.js, Express, TypeScript e MongoDB</p>
+
+  <form id="form">
+    <input type="hidden" id="id" />
+    <input id="titulo" placeholder="Título" required />
+    <input id="artista" placeholder="Artista" required />
+    <input id="ano" placeholder="Ano" type="number" min="1800" max="2100" required />
+    <input id="genero" placeholder="Gênero" required />
+    <select id="formato" required>
+      <option value="" disabled selected>Formato</option>
+      <option value="vinil">Vinil</option>
+      <option value="cd">CD</option>
+    </select>
+    <input id="preco" placeholder="Preço" type="number" min="0" step="0.01" required />
+    <button type="submit">Salvar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th><th>Artista</th><th>Ano</th><th>Gênero</th><th>Formato</th><th>Preço</th><th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <script src="main.js"></script>
+</body>
+</html>
