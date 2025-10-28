@@ -1,0 +1,9 @@
+{
+  "name": "atividade-mongodb",
+  "version": "1.1.0",
+  "description": "Atividade Prática MongoDB - Banco atividade_bd",
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "^7.0.0"
+  }
+}
