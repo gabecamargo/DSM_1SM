@@ -1,0 +1,66 @@
+Questão 1 – Criar banco e coleções
+db.createCollection("jogadores")
+db.createCollection("torneios")
+db.createCollection("partidas")
+
+Questão 2 – Embedding
+db.torneios.insertOne({
+  nome: "Copa Valorant",
+  premiacao: 5000,
+  jogadores: [
+    { nome: "Ana", idade: 22, pais: "Brasil" },
+    { nome: "Carlos", idade: 19, pais: "Portugal" },
+    { nome: "Julio", idade: 25, pais: "Brasil" }
+  ]
+})
+
+
+Questão 3 – Referencing
+db.jogadores.insertMany([
+  { nome: "Pedro", idade: 23, pais: "Brasil", nick: "Pedr0zin" },
+  { nome: "Lucas", idade: 20, pais: "Argentina" },
+  { nome: "Marina", idade: 26, pais: "Brasil", nick: "MariX" }
+])
+
+db.torneios.insertOne({
+  nome: "Copa CS:GO",
+  premiacao: 8000,
+  jogadores_ids: [
+    db.jogadores.findOne({ nome: "Pedro" })._id,
+    db.jogadores.findOne({ nome: "Lucas" })._id
+  ]
+})
+
+Questão 4 – Justificativa
+Embedding é melhor quando os jogadores do torneio são frequentemente consultados junto com o torneio (consultas rápidas e menos joins).
+
+Referencing é melhor quando os jogadores podem participar de vários torneios e precisam ser atualizados separadamente, evitando duplicação de dados.
+
+Questão 5 – Consulta ($gte)
+db.torneios.find({ premiacao: { $gte: 4000 } })
+
+Questão 6 – Consulta com $and
+db.jogadores.find({
+  $and: [
+    { pais: "Brasil" },
+    { idade: { $gt: 21 } }
+  ]
+})
+
+Questão 7 – Operador $exists
+db.jogadores.find({
+  nick: { $exists: true }
+})
+
+Questão 8 – Atualização com $set
+db.torneios.updateOne(
+  { nome: "Copa CS:GO" },
+  { $set: { status: "ativo" } }
+)
+
+Questão 9 – Exclusão
+db.jogadores.deleteOne({ nome: "Pedro" })
+
+Questão 10 – Paginação com ordenação
+db.torneios.find().sort({ premiacao: -1 }).skip(1).limit(1)
+
