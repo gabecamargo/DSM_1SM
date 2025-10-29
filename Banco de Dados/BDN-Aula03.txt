@@ -1,0 +1,25 @@
+. Criar a coleção pedidos
+db.createCollection("pedidos")
+
+. Inserir registros para diferentes clientes
+db.pedidos.insertMany([
+  { cliente: "João", produto: "Notebook", valor: 3500, data: "2025-02-15" },
+  { cliente: "Maria", produto: "Smartphone", valor: 2500, data: "2025-02-15" },
+  { cliente: "Pedro", produto: "Headset Gamer", valor: 400, data: "2025-02-16" },
+  { cliente: "Ana", produto: "Teclado Mecânico", valor: 700, data: "2025-02-17" }
+])
+
+. Consultar pedidos por cliente
+db.pedidos.find({ cliente: "Maria" })
+
+. Consultar pedidos com valor mínimo
+db.pedidos.find({ valor: { $gte: 1000 } })
+
+. Atualizar um pedido já inserido
+db.pedidos.updateOne(
+  { cliente: "Pedro", produto: "Headset Gamer" },
+  { $set: { valor: 450 } }
+)
+
+. Excluir um pedido específico
+db.pedidos.deleteOne({ cliente: "Ana" })
