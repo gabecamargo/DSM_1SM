@@ -1,0 +1,57 @@
+. Inserir 5 novas estações com diferentes sensores
+db.estacoes_meteorologicas.insertMany([
+  { nome: "Estação Norte",  localizacao: "Rio de Janeiro", sensores: ["temperatura", "vento", "umidade"] },
+  { nome: "Estação Sul",    localizacao: "São Paulo",      sensores: ["temperatura", "vento"] },
+  { nome: "Estação Leste",  localizacao: "Bahia",          sensores: ["pressão"] },
+  { nome: "Estação Oeste",  localizacao: "Acre",           sensores: [] },
+  { nome: "Estação Centro", localizacao: "Brasília",       sensores: ["temperatura", "umidade", "pressão"] }
+])
+
+. Adicionar campo "manutenção" = "pendente" em todas
+db.estacoes_meteorologicas.updateMany(
+  {},
+  { $set: { manutencao: "pendente" } }
+)
+
+. Adicionar sensor “pressão” à Estação Sul
+db.estacoes_meteorologicas.updateOne(
+  { nome: "Estação Sul" },
+  { $addToSet: { sensores: "pressão" } }
+)
+
+. Remover sensor “vento” da Estação Norte
+db.estacoes_meteorologicas.updateOne(
+  { nome: "Estação Norte" },
+  { $pull: { sensores: "vento" } }
+)
+
+. Remover estações sem sensores
+db.estacoes_meteorologicas.deleteMany({
+  sensores: { $size: 0 }
+})
+
+. Remover estações com menos de 3 sensores
+db.estacoes_meteorologicas.deleteMany({
+  $expr: { $lt: [ { $size: "$sensores" }, 3 ] }
+})
+
+. Listar estações com sensor “temperatura”
+db.estacoes_meteorologicas.find({
+  sensores: "temperatura"
+})
+
+. Encontrar estações com “temperatura” e “pressão”
+db.estacoes_meteorologicas.find({
+  $and: [
+    { sensores: "temperatura" },
+    { sensores: "pressão" }
+  ]
+})
+
+. Estações cujo campo localizacao é string
+db.estacoes_meteorologicas.find({
+  localizacao: { $type: "string" }
+})
+
+. Paginação: listar 4 por vez ignorando as 2 primeiras
+db.estacoes_meteorologicas.find().skip(2).limit(4)
