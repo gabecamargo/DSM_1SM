@@ -1,26 +1,26 @@
-# 📘 Repositório de Estudos – 1º Semestre
+<h2>📘 Repositório de Estudos – 1º Semestre<h2>
 
 ---
 
 ## 📚 Disciplinas
 
-### 1. Algoritmo e Lógica de Programação
+<h4>. Algoritmo e Lógica de Programação</h4>
 
-### 2. Desenvolvimento Web 1
+<h4>. Desenvolvimento Web 1</h4>
 
-### 3. Design Digital
+<h4>. Design Digital</h4>
 
-### 4. Engenharia de Software 1
+<h4>. Engenharia de Software 1</h4>
 
-### 5. Modelagem e Banco de Dados
+<h4>. Modelagem e Banco de Dados</h4>
 
-### 6. Técnicas de Programação
+<h4>. Técnicas de Programação 1</h4>
 
-### 7. Sistemas Operacionais e Redes de Computadores
+<h4>. Sistemas Operacionais e Redes de Computadores</h4>
 
 ---
 
 ## 💻 Tecnologias Utilizadas
 
 **Linguagens:**  
-JavaScript, TypeScript, HTML5, CSS3, SQL
+<strong>JavaScript, TypeScript, HTML5, CSS3, SQL</strong>
