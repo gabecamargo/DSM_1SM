@@ -14,8 +14,6 @@
 
 <h4>. Modelagem e Banco de Dados</h4>
 
-<h4>. Técnicas de Programação 1</h4>
-
 <h4>. Sistemas Operacionais e Redes de Computadores</h4>
 
 ---
