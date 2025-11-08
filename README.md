@@ -1,4 +1,4 @@
-<h2>📘 Repositório de Estudos – 2º Semestre<h2>
+<h2>📘 Repositório de Estudos – 3º Semestre<h2>
 
 ---
 
