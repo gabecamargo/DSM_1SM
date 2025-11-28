@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ordens de Serviço</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #bbb;
+      margin-bottom: 30px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      background: #0d6efd;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #084dbf;
+    }
+    .ordem {
+      background: #eee;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .linha {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ordens de Serviço</h1>
+
+  <div class="container">
+    <h2>Cadastrar Nova Ordem</h2>
+
+    <input id="titulo" placeholder="Título" required />
+    <textarea id="descricao" placeholder="Descrição" required></textarea>
+
+    <select id="status">
+      <option value="aberta">Aberta</option>
+      <option value="em andamento">Em andamento</option>
+      <option value="concluída">Concluída</option>
+    </select>
+
+    <select id="prioridade">
+      <option value="baixa">Baixa</option>
+      <option value="média">Média</option>
+      <option value="alta">Alta</option>
+    </select>
+
+    <input id="responsavel" placeholder="Responsável (opcional)" />
+    <input id="setor" placeholder="Setor solicitante" required />
+    <input type="date" id="prazo" />
+    <input type="number" step="0.01" id="valor" placeholder="Valor do serviço" required />
+
+    <button onclick="criarOrdem()">Salvar Ordem</button>
+  </div>
+
+  <div class="container">
+    <h2>Lista de Ordens</h2>
+    <div id="lista"></div>
+  </div>
+
+<script>
+  const API = "http://localhost:3000/ordens";
+
+  async function criarOrdem() {
+    const ordem = {
+      titulo: titulo.value,
+      descricao: descricao.value,
+      status: status.value,
+      prioridade: prioridade.value,
+      responsavel: responsavel.value || null,
+      setor: setor.value,
+      prazo: prazo.value || null,
+      valor: parseFloat(valor.value)
+    };
+
+    await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ordem),
+    });
+
+    alert("Ordem criada!");
+    listarOrdens();
+  }
+
+  async function listarOrdens() {
+    const res = await fetch(API);
+    const ordens = await res.json();
+
+    const lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    ordens.forEach(o => {
+      lista.innerHTML += `
+        <div class="ordem">
+          <div class="linha"><b>${o.titulo}</b></div>
+          <div class="linha">${o.descricao}</div>
+          <div class="linha">Status: ${o.status}</div>
+          <div class="linha">Prioridade: ${o.prioridade}</div>
+          <div class="linha">Responsável: ${o.responsavel || "Não definido"}</div>
+          <div class="linha">Setor: ${o.setor}</div>
+          <div class="linha">Valor: R$ ${o.valor.toFixed(2)}</div>
+          <button onclick="excluirOrdem('${o._id}')">Excluir</button>
+        </div>
+      `;
+    });
+  }
+
+  async function excluirOrdem(id) {
+    await fetch(API + "/" + id, { method: "DELETE" });
+    alert("Ordem excluída!");
+    listarOrdens();
+  }
+
+  listarOrdens();
+</script>
+
+</body>
+</html>
