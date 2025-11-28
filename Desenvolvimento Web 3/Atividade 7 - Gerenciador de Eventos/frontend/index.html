@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerenciador de Eventos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      background: #0d6efd;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #084dbf;
+    }
+    .evento {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gerenciador de Eventos</h1>
+
+  <div class="container">
+    <h2>Cadastrar Evento</h2>
+    <input id="titulo" placeholder="Título" />
+    <textarea id="descricao" placeholder="Descrição (opcional)"></textarea>
+    <input type="date" id="data" />
+    <input id="local" placeholder="Local" />
+    <input type="number" id="valor" step="0.01" placeholder="Valor" />
+    <button onclick="criarEvento()">Salvar Evento</button>
+  </div>
+
+  <div class="container" style="margin-top: 30px;">
+    <h2>Lista de Eventos</h2>
+    <div id="lista"></div>
+  </div>
+
+  <script>
+    const api = "http://localhost:3000/eventos";
+
+    async function criarEvento() {
+      const evento = {
+        titulo: document.getElementById("titulo").value,
+        descricao: document.getElementById("descricao").value,
+        data: document.getElementById("data").value,
+        local: document.getElementById("local").value,
+        valor: parseFloat(document.getElementById("valor").value)
+      };
+
+      const res = await fetch(api, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(evento)
+      });
+
+      alert("Evento criado com sucesso!");
+      listarEventos();
+    }
+
+    async function listarEventos() {
+      const res = await fetch(api);
+      const eventos = await res.json();
+
+      const lista = document.getElementById("lista");
+      lista.innerHTML = "";
+
+      eventos.forEach(e => {
+        lista.innerHTML += `
+          <div class="evento">
+            <strong>${e.titulo}</strong><br>
+            ${e.descricao || ""}<br>
+            Data: ${new Date(e.data).toLocaleDateString()}<br>
+            Local: ${e.local}<br>
+            Valor: R$ ${e.valor.toFixed(2)}<br><br>
+            <button onclick="deletarEvento('${e._id}')">Excluir</button>
+          </div>
+        `;
+      });
+    }
+
+    async function deletarEvento(id) {
+      await fetch(api + "/" + id, { method: "DELETE" });
+      alert("Evento removido!");
+      listarEventos();
+    }
+
+    listarEventos();
+  </script>
+</body>
+</html>
