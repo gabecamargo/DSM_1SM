@@ -1,20 +1,20 @@
-<h2>📘 Repositório de Estudos – 1º Semestre<h2>
+<h2>📘 Repositório de Estudos – 4º Semestre<h2>
 
 ---
 
 ## 📚 Disciplinas
 
-<h4>. Algoritmo e Lógica de Programação</h4>
+<h4>. Estatística Aplicada</h4>
 
-<h4>. Desenvolvimento Web 1</h4>
+<h4>. Integração e Entrega Continua</h4>
 
 <h4>. Design Digital</h4>
 
-<h4>. Engenharia de Software 1</h4>
+<h4>. Internet das Coisas e Aplicações</h4>
 
-<h4>. Modelagem e Banco de Dados</h4>
+<h4>. Laboratório de Desenvolvimento Web</h4>
 
-<h4>. Sistemas Operacionais e Redes de Computadores</h4>
+<h4>. Programação Para Dispositivos Móveis 1</h4>
 
 ---
 
