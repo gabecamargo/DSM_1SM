@@ -8,8 +8,6 @@
 
 <h4>. Integração e Entrega Continua</h4>
 
-<h4>. Design Digital</h4>
-
 <h4>. Internet das Coisas e Aplicações</h4>
 
 <h4>. Laboratório de Desenvolvimento Web</h4>
